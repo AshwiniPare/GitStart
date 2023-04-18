@@ -1,20 +1,24 @@
 function submitForm()
 {
-    
     var input = document.getElementById('name');
     let myObj = {userName: input.value};
     var input = document.getElementById('email');
     myObj.userEmail = input.value;
     var input = document.getElementById('phone');
     myObj.userPhone = input.value;
-    var input = document.getElementById('date');
-    myObj.userDate = input.value;
-    var input = document.getElementById('time');
-    myObj.userTime = input.value;
-
+    
     let myObjSerialized = JSON.stringify(myObj);
-    localStorage.setItem("myObj", myObjSerialized);
+    localStorage.setItem(myObj.userEmail, myObjSerialized);
 
-    let myObjDeserialized=JSON.parse(localStorage.getItem("myObj"));
-    console.log(myObjDeserialized);
+   let myObjDeserialized=JSON.parse(localStorage.getItem(myObj.userEmail));
+   console.log(myObjDeserialized);
+
+   //DOM Manipulation
+   var userInfo = myObj.userName+"-"+myObj.userEmail+"-"+myObj.userPhone;
+   let li = document.createElement('li');
+   li.appendChild(document.createTextNode(userInfo));
+   var itemList = document.getElementById('items');
+   itemList.appendChild(li);
+   
 }
+
