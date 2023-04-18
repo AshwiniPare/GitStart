@@ -37,20 +37,7 @@
         <input type="button" class="btn btn-primary" style="background-color:orange;" onclick="submitForm()" value="GET A CALL">
     </form>
     </div>
-    <script>
-        function submitForm()
-        {
-            var input = document.getElementById('name');
-            localStorage.setItem('userName',input.value);
-            var input = document.getElementById('email');
-            localStorage.setItem('userEmail',input.value);
-            var input = document.getElementById('phone');
-            localStorage.setItem('userPhone',input.value);
-            var input = document.getElementById('date');
-            localStorage.setItem('userDate',input.value);
-            var input = document.getElementById('time');
-            localStorage.setItem('userTime',input.value);
-        }
+    <script src="BookAppointment.js">
     </script>
     </body>
 </html>
