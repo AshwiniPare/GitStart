@@ -35,7 +35,35 @@ function deletePost() {
     })
 }
 
-Promise.all([createPost({title: 'POST1'}), updateLastUserActivityTime()])
+let promise;
+async function userActivity() {
+    try {
+         promise = await Promise.all([createPost({title: 'POST1'}), updateLastUserActivityTime()])
+        console.log(promise);
+    } catch(err) {
+        console.log(err);
+    }
+
+    try {
+        promise = await Promise.all([createPost({title: 'POST2'}), updateLastUserActivityTime()]);
+        console.log(promise);
+    } catch(err) {
+        console.log(err);
+    }
+
+    try {
+        promise = await Promise.all([deletePost(), updateLastUserActivityTime()])
+        console.log(posts);
+    } catch(err) {
+        console.log(err);
+
+    }
+    
+}
+
+userActivity();
+
+/*Promise.all([createPost({title: 'POST1'}), updateLastUserActivityTime()])
     .then (values => console.log(values))
     .catch(err => console.log(err))
 
@@ -46,7 +74,7 @@ Promise.all([createPost({title: 'POST2'}), updateLastUserActivityTime()])
        .then( console.log(posts))
         .catch(err => console.log(err));
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log(err))*/
 
 
 
